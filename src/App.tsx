@@ -8,10 +8,12 @@ function App() {
   const [count, setCount] = useState(0);
   const [clownMode, setClownMode] = useState(false);
 
+  let w : any = window;
+
   useEffect(() => {
-    let newClownMode = window.clownMode![0];
+    let newClownMode = w.clownMode[0];
     if (newClownMode != clownMode) setClownMode(newClownMode);
-  }, window.clownMode!);
+  }, w.clownMode);
 
   return (
     <>
