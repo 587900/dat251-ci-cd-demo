@@ -1,10 +1,17 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
+import clownImage from './assets/clown.webp'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [clownMode, setClownMode] = useState(false);
+
+  useEffect(() => {
+    let newClownMode = window.clownMode[0];
+    if (newClownMode != clownMode) setClownMode(newClownMode);
+  }, window.clownMode);
 
   return (
     <>
@@ -12,9 +19,15 @@ function App() {
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        { clownMode ? (
+          <a href="https://react.dev" target="_blank">
+            <img src={clownImage} className="logo react" alt="Clown image" />
+          </a>
+        ) : (
+          <a href="https://react.dev" target="_blank">
+            <img src={reactLogo} className="logo react" alt="React logo" />
+          </a>
+        )}
       </div>
       <h1>Vite + React</h1>
       <div className="card">
