@@ -9,9 +9,9 @@ function App() {
   const [clownMode, setClownMode] = useState(false);
 
   useEffect(() => {
-    let newClownMode = window.clownMode[0];
+    let newClownMode = window.clownMode![0];
     if (newClownMode != clownMode) setClownMode(newClownMode);
-  }, window.clownMode);
+  }, window.clownMode!);
 
   return (
     <>
